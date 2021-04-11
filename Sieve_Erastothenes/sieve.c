@@ -18,7 +18,7 @@ void sieve(long inicio, long fim, long array[]){
     }
 
     for(long i=0; i<limite; i++){
-        for(long j=2; j*j <= limite; j++){
+        for(long j=2; j*j <= limite; j++){  // Tem de ser <= !!!
             if(array[i] % j == 0 && array[i] != j){
                 array[i] = 0;
                 break;

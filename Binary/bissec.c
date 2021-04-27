@@ -16,12 +16,12 @@ int main(){
 }
 
 double bissect(double lo, double hi, double tol){
-    double fmid, fa = f(hi);
+    double fmid, f_hi = f(hi);
     while(hi-lo > tol){
         double mid = lo + (hi - lo) / 2;
         fmid = f(mid);
-        if(fmid * fa > 0){
-            hi = mid; fa = fmid;
+        if(fmid * f_hi > 0){
+            hi = mid; f_hi = fmid;
         } 
         else{
             lo = mid;

@@ -1,16 +1,14 @@
-// Reads two numbers and creates an array with all the even numbers between (and including) the two numbers read. 
 #include <stdio.h>
 
 int binary_seach(int array[], int num_elems, int to_search);
 
 int main(){
-    int a, b;
-    scanf("%d %d", &a, &b);
-    int array[b-a+1];
-    for(int i=0; i<=(b-a)/2; i++) array[i] = a + 2*i;
-    int elem; printf("Enter element to search: "); scanf("%d", &elem);
-    int size = sizeof(array) / sizeof(array[0]);
-    int found = binary_seach(array, size, elem);
+    
+    int array[] = {1,2,5,9,10,23,27,29,365,1241,1242,1422,1456};
+    int num_elems = sizeof(array) / sizeof(array[0]);
+
+    int to_search; scanf("%d", &to_search);
+    int found = binary_seach(array, num_elems, to_search);
     if(found == -1) printf("Not found\n");
     else printf("Element %d found at position %d\n", array[found], found);
     return 0;

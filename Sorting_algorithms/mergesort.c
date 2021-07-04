@@ -1,38 +1,33 @@
 #include <stdio.h> // adaptado do prof. Pedro Ribeiro
 
-void merge(int v[], int lo, int mid, int hi);
-void mergeSort(int v[], int lo, int hi);
+void merge(int array[], int lo, int mid, int hi);
+void mergesort(int array[], int lo, int hi);
 
-int main() {
-    int v[] = {56,324,6,32,1234,34,3,12,213,243,5,3,412,43,23,75}; // Inicializacao de array
-    int len = sizeof(v) / sizeof(v[0]);
-    for (int i=0; i<len; i++) printf("%d ", v[i]);
+int main(){
+    int array[] = {1,2,6,3,1,6,43,34,23,12,32,43,23,65,354,234,76};
+    int size = sizeof(array) / sizeof(array[0]);
+    for(int i=0; i<size; i++) printf("%d ", array[i]);
     putchar('\n');
-    mergeSort(v, 0, len-1);
-    for (int i=0; i<len; i++) printf("%d ", v[i]);
+    mergesort(array, 0, size-1);
+    for(int i=0; i<size; i++) printf("%d ", array[i]);
     putchar('\n');
 }
 
-
-void mergeSort(int v[], int lo, int hi) {
-    if (lo == hi) return;
+void mergesort(int array[], int lo, int hi){
+    if(lo == hi) return;
     int mid = lo + (hi-lo)/2;
-    mergeSort(v, lo, mid);
-    mergeSort(v, mid+1, hi);
-    merge(v, lo, mid, hi);
+    mergesort(array, lo, mid);
+    mergesort(array, mid+1, hi);
+    merge(array, lo, mid, hi);
 }
 
-void merge(int v[], int lo, int mid, int hi) {
-    int aux[hi-lo+1];
-    int p1 = lo;
-    int p2 = mid+1;
-    int cur = 0;
-    while (p1 <= mid && p2 <= hi) {
-        if (v[p1] <= v[p2]) aux[cur++] = v[p1++];
-        else aux[cur++] = v[p2++];
-    }
-    while (p1<=mid) aux[cur++] = v[p1++]; // Only one of these 
-    while (p2<=hi) aux[cur++] = v[p2++];  // two happens
+void merge(int array[], int lo, int mid, int hi){
+    int pos = 0, p1 = lo, p2 = mid+1;
+    int aux[lo+hi-1];
+    
+    while(p1 <= mid && p2 <= hi) aux[pos++] = array[p1] < array[p2] ? array[p1++] : array[p2++];
+    while(p1<=mid) aux[pos++] = array[p1++]; // Only one of
+    while(p2<=mid) aux[pos++] = array[p2++]; // these two happens
 
-    for (int i=0; i<cur; i++) v[lo+i] = aux[i];
+    for(int i=0; i<pos; i++) array[i+lo] = aux[i];
 }

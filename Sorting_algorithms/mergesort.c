@@ -27,7 +27,7 @@ void merge(int array[], int lo, int mid, int hi){
     
     while(p1 <= mid && p2 <= hi) aux[pos++] = array[p1] < array[p2] ? array[p1++] : array[p2++];
     while(p1<=mid) aux[pos++] = array[p1++]; // Only one of
-    while(p2<=mid) aux[pos++] = array[p2++]; // these two happens
+    while(p2<=hi) aux[pos++] = array[p2++]; // these two happens
 
     for(int i=0; i<pos; i++) array[i+lo] = aux[i];
 }

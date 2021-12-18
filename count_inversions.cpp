@@ -17,7 +17,7 @@ void merge(int arr[], int lo, int mid, int hi){
         }
         else{
             cnt_inversions += mid - p1 + 1;  // Count the inversions: To any element we choose from the "right" side, we have 
-            aux[idx++] = arr[p2++];          //                       to inversions for that number equal to the counting from p1 to mid. // see slides de AMD aula 11 to clarify 
+            aux[idx++] = arr[p2++];          // to inversions for that number equal to the counting from p1 to mid. // see slides de AMD aula 11 to clarify 
         }
     }
     while(p1 <= mid) aux[idx++] = arr[p1++];
